@@ -4,7 +4,7 @@ const Cart = (props) => {
   const cartItems = (
     <ul className={styles["cart-items"]}>
       {[{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (
-        <li>{item.name}</li>
+        <li key={item.id}>{item.name}</li>
       ))}
     </ul>
   );
@@ -17,7 +17,9 @@ const Cart = (props) => {
         <span>21.36</span>
       </div>
       <div className={styles.actions}>
-        <button className={styles["button--alt"]}>Close</button>
+        <button className={styles["button--alt"]} onClick={props.onClose}>
+          Close
+        </button>
         <button className={styles.button}>Order</button>
       </div>
     </div>
