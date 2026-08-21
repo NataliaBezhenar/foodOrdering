@@ -1,13 +1,22 @@
+import type { ReactNode } from "react";
 import ReactDOM from "react-dom";
 
 import Card from "./Card/Card";
 import styles from "./Modal.module.css";
 
-const Backdrop = (props) => {
+interface BackdropProps {
+  onClose: () => void;
+}
+
+const Backdrop = (props: BackdropProps) => {
   return <div className={styles.backdrop} onClick={props.onClose} />;
 };
 
-const ModalOverlay = (props) => {
+interface ModalOverlayProps {
+  children: ReactNode;
+}
+
+const ModalOverlay = (props: ModalOverlayProps) => {
   return (
     <Card className={styles.modal}>
       {props.children}
@@ -15,10 +24,15 @@ const ModalOverlay = (props) => {
   );
 };
 
-const backdropRoot = document.getElementById("backdrop-root");
-const overlayRoot = document.getElementById("overlay-root");
+const backdropRoot = document.getElementById("backdrop-root")!;
+const overlayRoot = document.getElementById("overlay-root")!;
 
-const Modal = (props) => {
+interface ModalProps {
+  onClose: () => void;
+  children: ReactNode;
+}
+
+const Modal = (props: ModalProps) => {
   return (
     <>
       {ReactDOM.createPortal(

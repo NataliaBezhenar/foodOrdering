@@ -1,6 +1,10 @@
 import styles from "./Cart.module.css";
 
-const Cart = (props) => {
+interface CartProps {
+  onClose: () => void;
+}
+
+const Cart = (props: CartProps) => {
   const cartItems = (
     <ul className={styles["cart-items"]}>
       {[{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (

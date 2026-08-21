@@ -1,7 +1,11 @@
 import styles from "./MealItemForm.module.css";
 import Input from "../../../UI/Input";
 
-const MealItemForm = (props) => {
+interface MealItemFormProps {
+  id: string;
+}
+
+const MealItemForm = (props: MealItemFormProps) => {
   return (
     <form className={styles.form}>
       <Input
