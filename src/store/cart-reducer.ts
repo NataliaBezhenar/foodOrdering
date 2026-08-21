@@ -42,6 +42,9 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
       const existingIndex = state.items.findIndex(
         (item) => item.id === action.id
       );
+      if (existingIndex === -1) {
+        return state;
+      }
       const existingItem = state.items[existingIndex];
       const updatedTotalAmount = state.totalAmount - existingItem.price;
       let updatedItems: CartItem[];
